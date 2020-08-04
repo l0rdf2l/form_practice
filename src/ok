@@ -1,0 +1,32 @@
+import React from 'react';
+import { useForm } from 'react-hook-form';
+
+export default function App() {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => console.log(data);
+  console.log(errors);
+  
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input type="datetime-local" placeholder="Date" name="Date" ref={register} />
+      <select name="Production Line" ref={register({ required: true })}>
+        <option value="LINE #01 - BAG">LINE #01 - BAG</option>
+        <option value=" LINE #02 - BAG"> LINE #02 - BAG</option>
+        <option value=" LINE #03 - TRAY"> LINE #03 - TRAY</option>
+        <option value=" LINE #04 - POUCH"> LINE #04 - POUCH</option>
+        <option value=" VSM Room 1 - MANUAL/BAG/GRILLER"> VSM Room 1 - MANUAL/BAG/GRILLER</option>
+        <option value=" VSM Room 2 - MANUAL/BAG/GRILLER"> VSM Room 2 - MANUAL/BAG/GRILLER</option>
+      </select>
+      <input type="number" placeholder="Pallet no." name="Pallet no." ref={register} />
+      <input type="time" placeholder="Time" name="Time" ref={register} />
+      <input type="text" placeholder="CHECK BY" name="CHECK BY" ref={register} />
+      <input type="number" placeholder="Item no." name="Item no." ref={register} />
+      <input type="search" placeholder="Item Description" name="Item Description" ref={register} />
+      <input type="text" placeholder="Lot no." name="Lot no." ref={register} />
+      <input type="number" placeholder="Quantity" name="Quantity" ref={register} />
+      <input type="text" placeholder="Reference no." name="Reference no." ref={register} />
+
+      <input type="submit" />
+    </form>
+  );
+}
